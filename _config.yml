@@ -2,7 +2,10 @@ title: SystemVerilog Engineering Log
 author: Art Kulakevich
 description: hello world!
 
-theme: jekyll-theme-minima
+# Remote Theme Configuration
+remote_theme: jekyll/minima
+
 plugins:
+  - jekyll-remote-theme
   - jekyll-feed
   - jekyll-seo-tag
