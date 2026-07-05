@@ -1,4 +1,8 @@
 title: SystemVerilog Engineering Log
 author: Art Kulakevich
 description: hello world!
+
 theme: jekyll-theme-minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
