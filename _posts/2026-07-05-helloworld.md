@@ -9,7 +9,8 @@ categories: setup
 Setup WSL, Vivado, and got onto HDLBits. Trying out github pages.
 
 ### Technical Milestone
-N/A
+Completed the following on HDLBits:
+<img width="257" height="168" alt="image" src="https://github.com/user-attachments/assets/d95c4f18-5c5c-457c-897d-439fcf59ba79" />
 
 ```bash
 Test
