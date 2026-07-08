@@ -1,0 +1,68 @@
+
+---
+layout: post
+title: "Day 4: progress update on adders"
+date: 2026-07-08
+categories: Module Practice
+---
+
+### Progress Summary
+
+
+### Technical Milestone
+Modules: Hierarchy
+
+    Modules
+    Connecting ports by position X 
+    Connecting ports by name X
+    Three modules X
+    Modules and vectors X
+    Adder 1
+    Adder 2 X
+    Carry-select adder X
+    Adder-subtractor (WIP)
+
+```bash
+
+Completed the following module, during the process I accidently set 'assign' in the always block. Which generated the 'Procedural Continuous Assignment to register is not supported File' failure.
+module top_module(
+    input [31:0] a,
+    input [31:0] b,
+    output [31:0] sum
+);
+    wire topsel;
+    wire [15:0] midtomulti, bottomulti;
+    
+    add16 top_adder (.a(a[15:0]), .b(b[15:0]), .cin(0), .cout(topsel), .sum(sum[15:0]));
+    add16 mid_adder (.a(a[31:16]), .b(b[31:16]), .cin(0), .sum(midtomulti));
+    add16 bot_adder (.a(a[31:16]), .b(b[31:16]), .cin(1), .sum(bottomulti));
+    
+    always @(*) begin
+        case (topsel) 
+            1'b0: sum[31:16] = midtomulti;
+            1'b1: sum[31:16] = bottomulti;
+           default:
+               sum[31:16] = 1'bx;
+       endcase
+    end
+    
+endmodule
+
+Started on the following (WIP):
+module top_module(
+    input [31:0] a,
+    input [31:0] b,
+    input sub,
+    output [31:0] sum
+);
+    wire carry;
+    wire [15:0] xorb;
+    
+    add16 top (.a(a[15:0]), .b(xorb[15:0]), .cin(sub), .cout(carry), .sum(sum[15:0]));
+    add16 bot (.a(a[15:0]), .b(xorb[15:0]), .cin(carry), .sum(sum[31:16]));
+    
+    assign xorb = {16{sub}}^(b[15:0]);
+
+endmodule
+
+
